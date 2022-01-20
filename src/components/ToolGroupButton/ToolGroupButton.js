@@ -36,6 +36,7 @@ class ToolGroupButton extends React.PureComponent {
     isActive: PropTypes.bool.isRequired,
     showColor: PropTypes.string,
     iconColorKey: PropTypes.string,
+    onClick: PropTypes.func
   };
 
   onClick = () => {
@@ -47,7 +48,12 @@ class ToolGroupButton extends React.PureComponent {
       toolGroup,
       toolNames,
       lastPickedToolForGroup,
+      onClick
     } = this.props;
+
+    if (onClick) {
+      onClick();
+    }
 
     if (isActive) {
       closeElement('toolStylePopup');
